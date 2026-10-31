@@ -5,7 +5,7 @@
 <h1 align="center">Gnova Music</h1>
 
 <p align="center">
-  Быстрый музыкальный плеер для компьютера: SoundCloud и музыка с диска, синхронный текст песен,
+  Быстрый музыкальный плеер для компьютера и Android: SoundCloud, синхронный текст песен,
   «Моя волна», без рекламы, аккаунта и сбора данных.
 </p>
 
@@ -13,6 +13,8 @@
   <a href="https://github.com/W1nq-coder/gnova-music-download/releases/latest/download/Gnova-Setup-Windows.exe"><b>⬇ Скачать для Windows</b></a>
   &nbsp;·&nbsp;
   <a href="#linux"><b>⬇ Установить на Linux</b></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/W1nq-coder/gnova-music-download/releases/latest/download/Gnova-Android.apk"><b>⬇ Скачать для Android</b></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/W1nq-coder/gnova-music-download/releases/latest">Все файлы</a>
 </p>
@@ -151,7 +153,7 @@
 |---|---|
 | **Windows** | Windows 10 или 11, 64-бит |
 | **Linux** | x86_64, glibc 2.35+ (Ubuntu 22.04+, Debian 12+, Fedora 36+, Arch/CachyOS/Manjaro и др.), Wayland или X11 |
-| **Android** | пока нет, версия для телефона в разработке |
+| **Android** | Android 8.0 или новее, телефон с 64-бит (почти все с 2017 года) или 32-бит ARM |
 | **macOS** | пока нет |
 
 Нужен интернет для SoundCloud и текстов песен; музыка с диска играет и без него.
@@ -224,15 +226,82 @@ curl -fsSL https://raw.githubusercontent.com/W1nq-coder/gnova-music-download/mai
 Медиатека и настройки при этом остаются. Чтобы удалить и их, скачайте `uninstall.sh` и запустите
 `bash uninstall.sh --purge`.
 
+## Android
+
+Версия для телефона: тот же поиск по SoundCloud, «Моя волна», артисты и альбомы, плейлисты, синхронный
+текст песен, таймер сна. Музыка играет в фоне, с кнопками в шторке уведомлений и на экране блокировки.
+
+<p align="center">
+  <img src="screenshots/android-search.webp" width="230" alt="Поиск на Android">
+  <img src="screenshots/android-player.webp" width="230" alt="Плеер на Android">
+  <img src="screenshots/android-lyrics.webp" width="230" alt="Текст песни на Android">
+</p>
+
+### Установка
+
+Приложения нет в Google Play и RuStore, оно ставится файлом `.apk` прямо с GitHub.
+
+1. Откройте на телефоне [эту ссылку](https://github.com/W1nq-coder/gnova-music-download/releases/latest/download/Gnova-Android.apk), файл `Gnova-Android.apk` (около 12 МБ) скачается в «Загрузки».
+2. Нажмите на скачанный файл. Телефон скажет, что установка из этого источника запрещена: нажмите **«Настройки»** и включите **«Разрешить установку из этого источника»** для браузера (или менеджера файлов), которым скачивали. Вернитесь назад.
+3. Нажмите **«Установить»**. На телефонах Xiaomi, Redmi и POCO может появиться проверка безопасности: выберите **«Установить всё равно»**.
+4. Откройте Gnova Music. На Android 13 и новее разрешите уведомления: в них живёт плеер.
+
+Если «Установить» недоступно, зайдите в «Настройки → Приложения → Специальный доступ → Установка неизвестных приложений» и разрешите браузеру.
+
+**Способ для тех, кто на компьютере:** включите на телефоне «Отладку по USB», подключите кабель и выполните
+`adb install Gnova-Android.apk`.
+
+### Обновление
+
+Скачайте новый `Gnova-Android.apk` и установите поверх старого. Медиатека и настройки сохранятся: все версии
+подписаны одним ключом.
+
+### Если музыка останавливается в фоне
+
+Многие оболочки Android сами «усыпляют» приложения, чтобы экономить батарею. Выключите это для Gnova Music:
+
+| Телефон | Что сделать |
+|---|---|
+| **Xiaomi, Redmi, POCO** | «Настройки → Приложения → Все приложения → Gnova Music»: **Автозапуск** включить; **Контроль активности** (или «Экономия заряда») → **«Нет ограничений»**. В «Недавних» потяните карточку приложения вниз и нажмите на замок, чтобы закрепить его. |
+| **Samsung** | «Настройки → Батарея → Ограничения в фоне»: уберите Gnova Music из «Спящих» и «Глубоко спящих» приложений. |
+| **Huawei, Honor** | «Настройки → Батарея → Запуск приложений → Gnova Music»: отключите автоматическое управление и включите «Автозапуск», «Косвенный запуск», «Работа в фоновом режиме». |
+| **OPPO, realme, OnePlus** | «Настройки → Приложения → Gnova Music → Использование батареи»: **«Разрешить работу в фоне»**. |
+| **vivo, iQOO** | «Настройки → Батарея → Работа в фоне»: разрешите Gnova Music. |
+| **Чистый Android, Pixel** | Обычно ничего менять не нужно. |
+
+### Что есть и чего пока нет
+
+- Есть: поиск и ссылки SoundCloud, «Моя волна» («Знакомое» и «Новое»), страницы артистов и альбомов, любимое, плейлисты,
+  история, текст песен с перемоткой по строке, очередь, перемешивание и повтор, скорость, таймер сна, тёмная и светлая
+  тема, акценты, русский и английский язык, статистика прослушивания.
+- Пока нет: воспроизведения файлов с памяти телефона, эквалайзера и настройки шрифтов. Это есть только в версии для компьютера.
+- Некоторые платные треки SoundCloud отдаёт только 30-секундным фрагментом. Это ограничение самого сервиса, так же и на компьютере.
+- Если провайдер замедляет картинки SoundCloud, обложки приходят в уменьшенном размере.
+
+### Проверка подписи
+
+Все версии подписаны одним ключом. SHA-256 отпечаток сертификата:
+
+```
+21:86:19:06:4F:EC:DE:A4:9E:CD:72:0B:9C:A0:BD:74:44:4C:8D:71:8B:C5:33:53:B0:77:E0:E0:5B:31:B7:5F
+```
+
+Проверить скачанный файл можно командой `apksigner verify --print-certs Gnova-Android.apk`. Если отпечаток другой,
+файл не от нас: не устанавливайте его.
+
+### Удаление
+
+Как обычное приложение: долгое нажатие на значок → «Удалить». Вместе с приложением удалятся медиатека и настройки.
+
 ## Где хранятся ваши данные
 
-Всё хранится только на вашем компьютере и никуда не отправляется.
+Всё хранится только на вашем устройстве и никуда не отправляется.
 
-| | Windows | Linux |
-|---|---|---|
-| Медиатека (любимое, плейлисты, история) | `%APPDATA%\gnova` | `~/.local/share/gnova` |
-| Настройки | `%APPDATA%\gnova` | `~/.config/gnova` |
-| Кэш обложек | `%LOCALAPPDATA%\gnova` | `~/.cache/gnova` |
+| | Windows | Linux | Android |
+|---|---|---|---|
+| Медиатека (любимое, плейлисты, история) | `%APPDATA%\gnova` | `~/.local/share/gnova` | внутренняя память приложения |
+| Настройки | `%APPDATA%\gnova` | `~/.config/gnova` | внутренняя память приложения |
+| Кэш обложек | `%LOCALAPPDATA%\gnova` | `~/.cache/gnova` | кэш приложения («Настройки → Приложения → Gnova Music → Очистить кэш») |
 
 Тексты песен ищутся на [lrclib.net](https://lrclib.net) по названию и исполнителю. Это можно
 выключить в «Настройки → Данные и приватность».
@@ -255,7 +324,7 @@ curl -fsSL https://raw.githubusercontent.com/W1nq-coder/gnova-music-download/mai
 <details>
 <summary><b>English</b></summary>
 
-**Gnova Music** is a fast desktop music player: SoundCloud and local files, synced lyrics,
+**Gnova Music** is a fast music player for desktop and Android: SoundCloud, synced lyrics,
 an endless "My wave" mix. No ads, no account, no tracking.
 
 - **Windows 10/11 (64-bit):** download
@@ -264,7 +333,12 @@ an endless "My wave" mix. No ads, no account, no tracking.
   Or in PowerShell: `irm https://raw.githubusercontent.com/W1nq-coder/gnova-music-download/main/install.ps1 | iex`
 - **Linux (x86_64, glibc 2.35+):**
   `curl -fsSL https://raw.githubusercontent.com/W1nq-coder/gnova-music-download/main/install.sh | bash`
-- **Android / macOS:** not yet.
+- **Android 8.0+:** download
+  [Gnova-Android.apk](https://github.com/W1nq-coder/gnova-music-download/releases/latest/download/Gnova-Android.apk),
+  tap it and allow installing from your browser when asked (on Xiaomi choose *Install anyway*).
+  The app is not on Google Play. To keep music playing in the background, turn off battery
+  optimisation for Gnova Music (see the Android section above). Local files on the phone are not supported yet.
+- **macOS:** not yet.
 
-All your data stays on your computer.
+All your data stays on your device.
 </details>
